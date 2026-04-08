@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeaSalt | Conscious Swimwear</title>
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar4">
+        <div class="logo">SEASALT<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#shop">Coleção</a></li>
+            <li><a href="#">Impacto</a></li>
+            <li><a href="#" class="cart-status">Cesto (0)</a></li>
+            <li><a href="login.html">Conta</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="tagline">Eco-Luxo vindo do Mar</span>
+            <h1>Beleza que <br>limpa o oceano.</h1>
+            <p>Biquínis premium desenhados em Portugal, criados a partir de plásticos marinhos regenerados.</p>
+            <div class="hero-btns">
+    <a href="#shop" class="btn-primary">Ver Coleção</a>
+    <a href="#" class="link-manifesto">O Nosso Manifesto <span>→</span></a>
+</div>
+        </div>
+    </header>
+
+    <section id="shop" class="products">
+        <div class="section-intro">
+            <h2>Essenciais de Verão</h2>
+            <p>Feito para durar. Feito para regenerar.</p>
+        </div>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?auto=format&fit=crop&w=800&q=80" alt="Top SeaSalt">
+                    <span class="badge">Econyl®</span>
+                </div>
+                <div class="product-details">
+                    <h3>Top Atlantis</h3>
+                    <p class="price">45.00€</p>
+                    <button class="add-to-cart">Quick Add +</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585241645927-c7a8e5844c42?auto=format&fit=crop&w=800&q=80" alt="Bottom SeaSalt">
+                </div>
+                <div class="product-details">
+                    <h3>Bottom Coral</h3>
+                    <p class="price">38.00€</p>
+                    <button class="add-to-cart">Quick Add +</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1568241018595-5853240e1136?auto=format&fit=crop&w=800&q=80" alt="Fato de Banho">
+                </div>
+                <div class="product-details">
+                    <h3>Fato de Banho Alga</h3>
+                    <p class="price">85.00€</p>
+                    <button class="add-to-cart">Quick Add +</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">SEASALT<span>.</span></div>
+            <p>Transformamos o passado do oceano no teu futuro de verão.</p>
+        </div>
+        <div class="copyright">&copy; 2026 SeaSalt Studio.</div>
+    </footer>
+
+
+
+    <script>
+    window.onscroll = function() {
+        const nav = document.querySelector('.navbar4'); 
+        const logoDot = document.querySelector('.logo span');
+        
+        if (window.pageYOffset > 50) {
+            // --- ESTADO AO DESCER (AZUL DO MAR) ---
+            // Usamos um gradiente azul profundo com transparência
+            nav.style.background = "linear-gradient(135deg, rgba(26, 55, 77, 0.95), rgba(91, 130, 145, 0.95))";
+            nav.style.backdropFilter = "blur(10px)";
+            nav.style.padding = "1rem 5%";
+            nav.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.2)";
+            nav.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
+            
+            // Mudamos o texto para BRANCO para ler bem sobre o azul
+            document.querySelectorAll('.nav-links a, .logo').forEach(el => {
+                el.style.color = "#ffffff";
+            });
+            // O til ou ponto pode ser um azul mais claro para destacar
+            logoDot.style.color = "#a2d2ff"; 
+            
+        } else {
+            // --- ESTADO NO TOPO (TRANSPARENTE) ---
+            nav.style.background = "transparent";
+            nav.style.backdropFilter = "none";
+            nav.style.padding = "2rem 5%";
+            nav.style.boxShadow = "none";
+            nav.style.borderBottom = "none";
+            
+            // Mantemos o texto branco para destacar sobre a foto do Hero
+            document.querySelectorAll('.nav-links a, .logo').forEach(el => {
+                el.style.color = "#ffffff";
+            });
+            logoDot.style.color = "#ffffff";
+        }
+    };
+</script>
+</body>
+</html>

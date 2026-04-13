@@ -19,23 +19,48 @@ body {
     overflow-x: hidden;
 }
 
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    height: 100%; /* Garante que ocupa a altura disponível */
+}
+
+.logo img {
+    display: block;
+    height: 30px; /* Podes subir para 35px se achares pequeno */
+    width: auto;
+    margin: 0;
+    padding: 0;
+
+    object-fit: contain; /* Garante que a imagem não distorce */
+}
+
+
 /* Navbar Moderna (Glassmorphism) */
 .navbar {
-    position: fixed;
+   position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     max-width: 1200px;
+    
+    /* ESTES SÃO OS PONTOS CHAVE */
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
+    align-items: center; /* Centraliza verticalmente todos os itens */
+    
+    height: 55px;
+    padding: 0.5rem 2.5rem; /* Reduzi um pouco o padding vertical */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
     border-radius: 50px;
     z-index: 1000;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .navbar2 {

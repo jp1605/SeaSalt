@@ -364,3 +364,10 @@ footer {
     .nav-links { display: none; }
     .hero-content h1 { font-size: 3.5rem; }
 }
+
+
+footer#main-footer {
+    background-color: #121212; /* Fundo escuro */
+    padding: 6rem 8% 3rem;
+    width: 100%;
+}

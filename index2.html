@@ -26,9 +26,9 @@
             <h1>Beleza que <br>limpa o oceano.</h1>
             <p>Biquínis premium desenhados em Portugal, criados a partir de plásticos marinhos regenerados.</p>
             <div class="hero-btns">
-    <a href="#shop" class="btn-primary">Ver Coleção</a>
-    <a href="#" class="link-manifesto">O Nosso Manifesto <span>→</span></a>
-</div>
+                <a href="#shop" class="btn-primary">Ver Coleção</a>
+                <a href="#" class="link-manifesto">O Nosso Manifesto <span>→</span></a>
+            </div>
         </div>
     </header>
 
@@ -75,22 +75,17 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">SEASALT<span>.</span></div>
-            <p>Transformamos o passado do oceano no teu futuro de verão.</p>
-        </div>
-        <div class="copyright">&copy; 2026 SeaSalt Studio.</div>
-    </footer>
-
-
+    <footer id="main-footer"></footer>
 
     <script src="auth.js"></script>
+    <script src="components.js"></script>
     <script src="script.js"></script>
-    
+
     <script>
-        // Inicia a verificação de sessão do utilizador
-        document.addEventListener('DOMContentLoaded', checkUserSession);
+        // Inicia a sessão e garante que o footer carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof checkUserSession === 'function') checkUserSession();
+        });
     </script>
 </body>
 </html>

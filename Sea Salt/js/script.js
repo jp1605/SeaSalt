@@ -1,4 +1,4 @@
-// script.js - Lógica visual da homepage
+// js/script.js - Lógica visual da homepage
 
 window.onscroll = function() {
     const nav = document.querySelector('.navbar4'); 

@@ -1,4 +1,4 @@
-// auth.js - Lógica de Autenticação para SeaSalt
+// js/auth.js - Lógica de Autenticação para SeaSalt
 
 // Função para Registar utilizador
 function handleRegister(event) {
@@ -46,7 +46,7 @@ function handleLogin(event) {
 function checkUserSession() {
     const isLoggedIn = localStorage.getItem('userLoggedIn');
     const userName = localStorage.getItem('userName');
-    const authLink = document.querySelector('a[href="login.html"]');
+    const authLink = document.querySelector('a[href="html/login.html"]');
 
     if (isLoggedIn === 'true' && authLink) {
         authLink.innerHTML = `Olá, ${userName}`;

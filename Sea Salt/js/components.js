@@ -1,4 +1,4 @@
-// components.js - Versão corrigida
+// js/components.js - Versão corrigida
 async function loadComponent(elementId, filePath) {
     const element = document.getElementById(elementId);
     if (!element) return;
@@ -19,5 +19,5 @@ async function loadComponent(elementId, filePath) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadComponent('main-footer', 'footer.html');
+    loadComponent('main-footer', 'html/footer.html');
 });

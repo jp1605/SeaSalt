@@ -21,3 +21,31 @@ async function loadComponent(elementId, filePath) {
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('main-footer', 'html/footer.html');
 });
+
+
+// js/components.js
+
+async function loadComponent(elementId, filePath) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    try {
+        const response = await fetch(filePath);
+        if (response.ok) {
+            const html = await response.text();
+            element.innerHTML = html;
+            
+            // Se for a navbar, precisamos de atualizar o contador do carrinho após carregar
+            if (elementId === 'main-nav' && typeof updateCartCounter === 'function') {
+                updateCartCounter();
+            }
+        }
+    } catch (error) {
+        console.error(`Erro ao carregar o componente ${filePath}:`, error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadComponent('main-nav', '/html/navbar.html'); // Carrega a Navbar
+    loadComponent('main-footer', '/html/footer.html'); // Carrega o Footer
+});

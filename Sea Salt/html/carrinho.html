@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O teu carrinho | SeaSalt</title>
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body style="background-color: #fcfcfc;">
+
+    <nav class="navbar" style="background: white; position: relative; top: 0; transform: none; left: 0; width: 100%; max-width: none; border-radius: 0; margin-bottom: 50px;">
+        <a href="../index.html" class="logo">
+            <img src="../assets/frase-logo-rmvbg.png" alt="SeaSalt Logo" style="height: 30px;">
+        </a>
+        <a href="../index.html" style="text-decoration: none; color: #121212; font-size: 0.8rem; font-weight: 600;">← CONTINUAR A COMPRAR</a>
+    </nav>
+
+    <main class="carrinho-container" style="max-width: 1000px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+        
+        <section class="carrinho-items">
+            <h2 style="font-family: 'Syne', sans-serif; margin-bottom: 30px;">O teu carrinho</h2>
+            
+            <div id="cart-list">
+                <p style="opacity: 0.6;">O teu carrinho está vazio.</p>
+            </div>
+        </section>
+
+        <section class="carrinho-summary" style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); height: fit-content;">
+            <h3 style="font-family: 'Syne', sans-serif; margin-bottom: 20px;">Resumo</h3>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>Subtotal</span>
+                <span id="subtotal">0.00€</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <span>Envio</span>
+                <span style="color: #5b8291; font-weight: 600;">Grátis</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.2rem; margin-bottom: 30px;">
+                <span>Total</span>
+                <span id="total">0.00€</span>
+            </div>
+            <button class="btn-primary" style="width: 100%; border: none; background: #121212; color: white; cursor: pointer;">FINALIZAR COMPRA</button>
+            
+            <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center; opacity: 0.5; font-size: 1.2rem;">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-apple-pay"></i>
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>

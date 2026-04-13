@@ -26,21 +26,19 @@
                 <h2>Bem-vinda de volta.</h2>
                 <p>Inicia sessão para gerir as tuas encomendas e favoritos.</p>
 
-                <form>
+                <form id="loginForm" onsubmit="handleLogin(event)">
                     <div class="input-group">
                         <label>Email</label>
-                        <input type="email" placeholder="exemplo@email.com" required>
+                        <input type="email" id="email" placeholder="exemplo@email.com" required>
                     </div>
                     <div class="input-group">
                         <label>Palavra-passe</label>
-                        <input type="password" placeholder="••••••••" required>
-                    </div>
-                    <div class="auth-options">
-                        <label><input type="checkbox"> Lembrar-me</label>
-                        <a href="#">Esqueci-me da senha</a>
+                        <input type="password" id="password" placeholder="••••••••" required>
                     </div>
                     <button type="submit" class="auth-submit">Entrar</button>
                 </form>
+
+<script src="auth.js"></script>
 
                 <p class="auth-footer">
                     Ainda não tens conta? <a href="registo.html">Criar conta SeaSalt</a>

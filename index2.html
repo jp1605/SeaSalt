@@ -85,42 +85,12 @@
 
 
 
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    
     <script>
-    window.onscroll = function() {
-        const nav = document.querySelector('.navbar4'); 
-        const logoDot = document.querySelector('.logo span');
-        
-        if (window.pageYOffset > 50) {
-            // --- ESTADO AO DESCER (AZUL DO MAR) ---
-            // Usamos um gradiente azul profundo com transparência
-            nav.style.background = "linear-gradient(135deg, rgba(26, 55, 77, 0.95), rgba(91, 130, 145, 0.95))";
-            nav.style.backdropFilter = "blur(10px)";
-            nav.style.padding = "1rem 5%";
-            nav.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.2)";
-            nav.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
-            
-            // Mudamos o texto para BRANCO para ler bem sobre o azul
-            document.querySelectorAll('.nav-links a, .logo').forEach(el => {
-                el.style.color = "#ffffff";
-            });
-            // O til ou ponto pode ser um azul mais claro para destacar
-            logoDot.style.color = "#a2d2ff"; 
-            
-        } else {
-            // --- ESTADO NO TOPO (TRANSPARENTE) ---
-            nav.style.background = "transparent";
-            nav.style.backdropFilter = "none";
-            nav.style.padding = "2rem 5%";
-            nav.style.boxShadow = "none";
-            nav.style.borderBottom = "none";
-            
-            // Mantemos o texto branco para destacar sobre a foto do Hero
-            document.querySelectorAll('.nav-links a, .logo').forEach(el => {
-                el.style.color = "#ffffff";
-            });
-            logoDot.style.color = "#ffffff";
-        }
-    };
-</script>
+        // Inicia a verificação de sessão do utilizador
+        document.addEventListener('DOMContentLoaded', checkUserSession);
+    </script>
 </body>
 </html>

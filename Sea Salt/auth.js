@@ -18,7 +18,7 @@ function handleRegister(event) {
         localStorage.setItem('userName', nome.split(' ')[0]);
 
         alert('Bem-vinda à SeaSalt, ' + nome + '!');
-        window.location.href = 'index2.html';
+        window.location.href = 'index.html';
     } else {
         alert('Dados inválidos. A password deve ter pelo menos 8 caracteres.');
     }
@@ -36,7 +36,7 @@ function handleLogin(event) {
         localStorage.setItem('userLoggedIn', 'true');
         localStorage.setItem('userName', contaGuardada.nome.split(' ')[0]);
         
-        window.location.href = 'index2.html';
+        window.location.href = 'index.html';
     } else {
         alert('Credenciais incorretas ou conta inexistente.');
     }

@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/jp1605/SeaSalt/issues"
   },
-  "homepage": "https://github.com/jp1605/SeaSalt#readme"
+  "homepage": "https://github.com/jp1605/SeaSalt#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.4.1"
+  }
 }

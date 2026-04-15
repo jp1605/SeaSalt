@@ -29,3 +29,21 @@ window.onscroll = function() {
         if(logoDot) logoDot.style.color = "#ffffff";
     }
 };
+
+
+
+/* Lógica do carrossel de produtos na homepage*/
+const grid = document.querySelector('.product-grid');
+const dots = document.querySelectorAll('.pager button');
+
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        // Remove 'active' de todos e adiciona ao clicado
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+
+        // Calcula o deslize (ex: se cada grupo tem 3 produtos)
+        const moveAmount = index * 100; // Desliza 100% da largura visível
+        grid.style.transform = `translateX(-${moveAmount}%)`;
+    });
+});

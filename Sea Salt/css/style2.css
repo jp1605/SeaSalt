@@ -11,13 +11,63 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/*  CRIADO PELO GEMINI
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg);
     color: var(--text);
     overflow-x: hidden;
 }
+*/
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(233, 233, 233);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+.pager{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.pager button{
+    flex:  0 0 42px;
+    height: 42px;
+    border:0;
+    padding:6px;
+    background: transparent;
+    cursor:pointer;
+    transition: 0.4s;
+}
+
+.pager button span{
+    display: block;
+    height: 30px;
+    width:100%;
+    border-radius:15px;
+    background: rgba(1, 138, 202, 0.814); /* Cor dos circulos*/
+    transition:0.4s;
+
+}
+
+.pager button:focus{
+    flex: 0 0 80px;
+}
+
+.pager button:focus span{
+    background: #3c92b4;
+}
+
+
+
+
+
+
 
 
 .logo {
@@ -238,18 +288,16 @@ body {
     font-family: 'Syne', sans-serif;
     font-size: 3rem;
 }
-
+/* Transforma a grid num carrossel de uma linha só */
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    display: flex; /* Muda de grid para flex */
+    overflow-x: hidden; /* Esconde a barra de scroll */
+    scroll-behavior: smooth;
+    gap: 0; /* Para os produtos colarem um ao outro se quiseres 1 por vez */
 }
 
 .product-card {
-    background: var(--white);
-    padding: 1rem;
-    border-radius: 20px;
-    transition: var(--transition);
+    flex: 0 0 100%; /* Cada card ocupa a largura total do contentor */
 }
 
 .product-image {

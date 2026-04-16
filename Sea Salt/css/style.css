@@ -1,0 +1,446 @@
+:root {
+    --bg: #f8f9fa;
+    --text: #121212;
+    --accent: #5b8291; /* Azul salgado moderno */
+    --white: #ffffff;
+    --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*  CRIADO PELO GEMINI
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+*/
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(233, 233, 233);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+.pager{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.pager button{
+    flex:  0 0 42px;
+    height: 42px;
+    border:0;
+    padding:6px;
+    background: transparent;
+    cursor:pointer;
+    transition: 0.4s;
+}
+
+.pager button span{
+    display: block;
+    height: 30px;
+    width:100%;
+    border-radius:15px;
+    background: rgba(1, 138, 202, 0.814); /* Cor dos circulos*/
+    transition:0.4s;
+
+}
+
+.pager button:focus{
+    flex: 0 0 80px;
+}
+
+.pager button:focus span{
+    background: #3c92b4;
+}
+
+
+
+
+
+
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    height: 100%; /* Garante que ocupa a altura disponível */
+}
+
+.logo img {
+    display: block;
+    height: 30px; /* Podes subir para 35px se achares pequeno */
+    width: auto;
+    margin: 0;
+    padding: 0;
+
+    object-fit: contain; /* Garante que a imagem não distorce */
+}
+
+
+/* Navbar Moderna (Glassmorphism) */
+.navbar {
+   position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    
+    /* ESTES SÃO OS PONTOS CHAVE */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente todos os itens */
+    
+    height: 55px;
+    padding: 0.5rem 2.5rem; /* Reduzi um pouco o padding vertical */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.navbar2 {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* Gradiente que lembra a cor do mar */
+    background: linear-gradient(135deg, rgba(91, 130, 145, 0.9), rgba(26, 55, 77, 0.9));
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Precisas de mudar a cor dos links para branco para terem contraste */
+
+/*.nav-links a, .logo {
+    color: var(--white) !important;
+}*/
+
+.navbar3 {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--white);
+    /* Padrão de ondas SVG em background */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='20' viewBox='0 0 80 20'%3E%3Cpath d='M0 10 Q 20 0 40 10 T 80 10' fill='none' stroke='%235b8291' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    z-index: 1000;
+    border: 1px solid rgba(91, 130, 145, 0.2);
+}
+
+/* Navbar Transparente */
+.navbar4 {
+    position: fixed;
+    top: 0; /* Colocamos no topo para um look mais limpo */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    background: transparent; /* Totalmente invisível */
+    z-index: 1000;
+    transition: var(--transition); /* Suaviza futuras mudanças */
+}
+
+/* Garante que o texto se destaque sobre a imagem do mar */
+.logo, .nav-links a {
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra subtil para leitura */
+}
+
+.logo span {
+    color: var(--white); /* No modo transparente, mantemos o ponto branco ou azul claro */
+}
+
+/* Ajuste no Hero para o texto não bater na navbar */
+.hero {
+    padding-top: 80px;
+}
+/* === FIM DA NAVBAR4====*/
+.logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    max-width: 700px;
+}
+
+.tagline {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-content h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 10vw, 5rem);
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    padding: 1.2rem 2.5rem;
+    background: var(--white);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-right: 1rem;
+    transition: var(--transition);
+}
+
+.btn-primary:hover { background: var(--accent); color: var(--white); }
+
+/* Grid de Produtos */
+.products {
+    padding: 8rem 5%;
+}
+
+.section-intro {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-intro h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+}
+/* Transforma a grid num carrossel de uma linha só */
+.product-grid {
+    display: flex; /* Muda de grid para flex */
+    overflow-x: hidden; /* Esconde a barra de scroll */
+    scroll-behavior: smooth;
+    gap: 0; /* Para os produtos colarem um ao outro se quiseres 1 por vez */
+}
+
+.product-card {
+    flex: 0 0 100%; /* Cada card ocupa a largura total do contentor */
+}
+
+.product-image {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.product-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.product-card:hover .product-image img { transform: scale(1.08); }
+
+.badge {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: rgba(255,255,255,0.9);
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.product-details {
+    padding: 1.5rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price { color: var(--accent); font-weight: 600; margin: 5px 0 15px; }
+
+.add-to-cart {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #eee;
+    background: none;
+    cursor: pointer;
+    border-radius: 50px;
+    font-family: inherit;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.add-to-cart:hover {
+    background: var(--text);
+    color: var(--white);
+}
+
+/* Footer */
+footer {
+    padding: 5rem 5% 2rem;
+    background: #121212;
+    color: white;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.copyright {
+    margin-top: 3rem;
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+
+/* Estilo Moderno para o Manifesto */
+.link-manifesto {
+    display: inline-block;
+    margin-left: 2rem;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: var(--transition);
+}
+
+/* A "Onda" debaixo do texto */
+.link-manifesto::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Começa invisível */
+    height: 1px;
+    background-color: var(--accent); /* O azul que definimos */
+    transition: width 0.4s ease;
+}
+
+.link-manifesto:hover {
+    color: var(--accent);
+    transform: translateX(5px); /* Pequeno deslize para a direita */
+}
+
+.link-manifesto:hover::after {
+    width: 100%; /* A linha cresce ao passar o rato */
+}
+
+.link-manifesto span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 5px;
+}
+
+.link-manifesto:hover span {
+    transform: translateX(8px); /* A seta afasta-se ligeiramente */
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    .link-manifesto {
+        margin-left: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .navbar { width: 95%; padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content h1 { font-size: 3.5rem; }
+}
+
+
+footer#main-footer {
+    background-color: #121212; /* Fundo escuro */
+    padding: 6rem 8% 3rem;
+    width: 100%;
+}

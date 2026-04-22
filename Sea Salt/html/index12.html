@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeaSalt | Conscious Swimwear</title>
+    <link rel="icon" type="image/png" href="assets/Logo1_sem-fundo.png">
+    <link rel="stylesheet" href="css/style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <!--<div class="logo">SEASALT<span>.</span></div>-->
+
+        <a href="index.html" class="logo">
+        <img src="assets/frase-logo-rmvbg.png" alt="SeaSalt Logo">
+    </a>
+        <ul class="nav-links">
+            <li><a href="#shop">Coleção</a></li>
+            <li><a href="#">Impacto</a></li>
+            <li><a href="html/carrinho.html" class="cart-status">carrinho (0)</a></li>
+            <li><a href="html/login.html">Conta</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="tagline">Eco-Luxo vindo do Mar</span>
+            <h1>Beleza que <br>limpa o oceano.</h1>
+            <p>Biquínis premium desenhados em Portugal, criados a partir de plásticos marinhos regenerados.</p>
+            <div class="hero-btns">
+                <a href="#shop" class="btn-primary">Ver Coleção</a>
+                <a href="#" class="link-manifesto">O Nosso Manifesto <span>→</span></a>
+            </div>
+        </div>
+    </header>
+
+    <section id="shop" class="products">
+        <div class="section-intro">
+            <h2>Essenciais de Verão</h2>
+            <p>Feito para durar. Feito para regenerar.</p>
+        </div>
+
+        
+        <!-- produto1 -->
+       <div class="carousel-container">
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?auto=format&fit=crop&w=800&q=80" alt="Top SeaSalt">
+                    <span class="badge">Econyl®</span>
+                </div>
+                <div class="product-details">
+                    <h3>Top Atlantis</h3>
+                    <p class="price">45.00€</p>
+                    <button class="add-to-cart">Quick Add +</button>
+                </div>
+            </div>
+
+
+    <div class="carousel-container">
+        <div class="product-grid">
+            <div class="product-card">...</div>
+            <div class="product-card">...</div>
+        </div>
+    </div>
+
+<!-- =======PAGER======= -->
+<div class="pager">
+    <button><span></span></button>
+    <button><span></span></button>
+    <button><span></span></button>
+    <button><span></span></button>
+    <button><span></span></button>
+    <button><span></span></button>
+    <button><span></span></button>
+        
+</div>
+    </section>
+
+
+
+    <footer id="main-footer"></footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        // Inicia a sessão e garante que o footer carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof checkUserSession === 'function') checkUserSession();
+        });
+    </script>
+</body>
+</html>

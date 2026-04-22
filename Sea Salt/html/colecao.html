@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coleção | SeaSalt</title>
+    <link rel="stylesheet" href="../css/style3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="collection-page">
+
+    <nav class="navbar dark">
+        <a href="../index.html" class="logo">
+            <img src="../assets/frase-logo-rmvbg.png" alt="SeaSalt Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="colecao.html">Coleção</a></li>
+            <li><a href="../html/carrinho.html">Carrinho</a></li>
+            <li><a href="../html/login.html">Conta</a></li>
+        </ul>
+    </nav>
+
+    <header class="collection-hero">
+        <div class="container">
+            <span class="eyebrow">Shop All</span>
+            <h1>A Nossa Coleção</h1>
+            <p>Peças éticas, criadas para durar e desenhadas para elevar a tua confiança.</p>
+        </div>
+    </header>
+
+    <main class="collection-container">
+        <div class="filter-wrapper">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="bikini">Biquínis</button>
+                <button class="filter-btn" data-filter="swimsuit">Fatos de Banho</button>
+                <button class="filter-btn" data-filter="promo">Promoções</button>
+            </div>
+            <div class="product-count">
+                <span id="count-num">6</span> produtos encontrados
+            </div>
+        </div>
+
+        <div class="products-masonry" id="product-grid">
+            
+            <div class="product-item bikini">
+                <div class="product-img-box">
+                    <img src="../assets/pint_model/model1.jpeg" alt="Top Atlantis">
+                    <div class="overlay-actions">
+                        <button>Adicionar +</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Top Atlantis</h3>
+                    <span class="price">45.00€</span>
+                </div>
+            </div>
+
+            <div class="product-item bikini">
+                <div class="product-img-box">
+                    <img src="../assets/pint_model/model2.jpeg" alt="Bottom Coral">
+                </div>
+                <div class="product-info">
+                    <h3>Bottom Coral</h3>
+                    <span class="price">37.99€</span>
+                </div>
+            </div>
+
+            <div class="product-item swimsuit promo">
+                <div class="product-img-box">
+                    <img src="../assets/pint_model/model3.jpeg" alt="Fato de Banho Alga">
+                    <span class="badge sale">Promo</span>
+                </div>
+                <div class="product-info">
+                    <h3>Fato de Banho Alga</h3>
+                    <span class="price"><del>85.00€</del> 68.00€</span>
+                </div>
+            </div>
+
+            </div>
+    </main>
+
+    <footer id="main-footer">
+        <div class="footer-logo">SEASALT<span>~</span></div>
+    </footer>
+
+   <script type="module">
+    import { supabase } from '../js/supabase.js';
+
+    async function carregarDetalhesProduto() {
+        // 1. Extrair o ID da URL (ex: ?id=12)
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        if (!productId) {
+            window.location.href = 'colecao.html'; // Se não houver ID, volta para a coleção
+            return;
+        }
+
+        // 2. Pedir ao Supabase apenas este produto
+        const { data: produto, error } = await supabase
+            .from('produtos')
+            .select('*')
+            .eq('id', productId)
+            .single(); // Queremos apenas um resultado
+
+        if (error || !produto) {
+            console.error("Produto não encontrado");
+            return;
+        }
+
+        // 3. Injetar os dados no HTML
+        document.getElementById('tituloProd').innerText = produto.nome;
+        document.getElementById('precoProd').innerText = `${produto.preco.toFixed(2)}€`;
+        document.getElementById('descProd').innerText = produto.descricao || "Sem descrição disponível.";
+        document.getElementById('catProd').innerText = produto.categoria;
+        
+        // Atualizar as imagens (se tiveres várias colunas no Supabase)
+        document.getElementById('mainImage').src = produto.imagem_url;
+        
+        // Se tiveres as 3 fotos na base de dados (ex: img1, img2, img3):
+        // const thumbs = document.querySelectorAll('.thumb');
+        // thumbs[0].src = produto.imagem_url;
+        // thumbs[1].src = produto.imagem_url_2;
+        // thumbs[2].src = produto.imagem_url_3;
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarDetalhesProduto);
+</script>
+</body>
+</html>

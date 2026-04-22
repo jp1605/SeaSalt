@@ -551,3 +551,206 @@ footer#main-footer {
         padding: 2rem;
     }
 }
+
+
+
+
+/* Estilo do Menu Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 10px 0;
+    z-index: 1001;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.dropdown-content a {
+    color: var(--text);
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    text-transform: none; /* Mantém as letras normais para parecer mais limpo */
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.dropdown-content a:hover {
+    background-color: var(--accent-light);
+    color: var(--accent);
+}
+
+/* Mostrar o menu ao passar o rato */
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}   
+
+
+
+/* Página de Coleção */
+.collection-hero {
+    padding: 160px 5% 60px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.collection-hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin: 20px 0;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+
+/* Filtros */
+.filter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 50px;
+}
+
+.filter-controls { display: flex; gap: 15px; }
+
+.filter-btn {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+}
+
+/* Grelha de Produtos */
+.products-masonry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas em desktop */
+    gap: 30px;
+    padding: 0 5% 100px;
+}
+/* =========================================
+   GRELHA DA PÁGINA DE COLEÇÃO (MODERNIZADA)
+   ========================================= */
+
+.product-item {
+    /* O contentor do produto no "Coleção" deve seguir o look do index */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 1.2rem;
+    border-radius: 24px; /* MESMO ARREDONDAMENTO DO INDEX */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.product-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(91, 130, 145, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.product-img-box {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 16px; /* ARREDONDAMENTO DA IMAGEM INTERNA */
+    margin-bottom: 15px;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+/* Detalhes do Produto na Coleção */
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+}
+
+.product-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.product-info .price {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+
+
+.product-item:hover img {
+    transform: scale(1.1);
+}
+
+
+
+.price {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.badge.sale {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .products-masonry { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .products-masonry { grid-template-columns: 1fr; }
+    .filter-wrapper { flex-direction: column; gap: 20px; text-align: center; }
+}

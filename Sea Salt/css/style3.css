@@ -434,3 +434,120 @@ footer#main-footer {
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 }
+
+
+
+
+
+/* =========================================
+   CATEGORIAS (GRID ESTILO PULAU)
+   ========================================= */
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    grid-template-rows: 280px 280px; /* Altura de cada bloco na direita */
+    gap: 20px;
+    padding: 5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* O cartão base */
+.cat-card {
+    position: relative;
+    border-radius: 8px; /* Cantos ligeiramente redondos, estilo Pulau */
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end; /* Empurra o texto para baixo */
+    padding: 3rem;
+}
+
+/* O bloco da esquerda ocupa 2 linhas de altura! */
+.cat-biquinis {
+    grid-row: span 2;
+}
+
+/* Imagem de Fundo */
+.cat-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+}
+
+/* Gradiente escuro para garantir que o texto se lê em qualquer foto */
+.cat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%);
+    z-index: 2;
+    transition: background 0.4s ease;
+}
+
+/* Estilo do Texto */
+.cat-content {
+    position: relative;
+    z-index: 3;
+    color: var(--white);
+}
+
+.cat-subtitle {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.cat-content h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* O botão igual ao da Pulau (mas com a tua cor SeaSalt) */
+.btn-shop {
+    display: inline-block;
+    background-color: var(--accent); /* O teu Azul Salgado */
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+/* Efeitos de Interação (Quando passas o rato) */
+.cat-card:hover .cat-bg {
+    transform: scale(1.05); /* Imagem aproxima ligeiramente */
+}
+
+.cat-card:hover .btn-shop {
+    background-color: var(--white);
+    color: var(--text);
+}
+
+/* Responsividade (Para ficar bem no Telemóvel) */
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: 1fr; /* Passa a 1 coluna */
+        grid-template-rows: auto;
+        gap: 15px;
+        padding: 3rem 5%;
+    }
+    .cat-biquinis, .cat-fatos, .cat-promos {
+        height: 350px;
+        grid-row: auto; /* Desliga o modo duplo da esquerda */
+        padding: 2rem;
+    }
+}

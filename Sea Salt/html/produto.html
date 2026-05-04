@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto | SeaSalt</title>
+    <link rel="stylesheet" href="../css/style3.css">
+    <link rel="stylesheet" href="../css/produto.css"> <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar dark">
+        <a href="../index.html" class="logo">
+            <img src="../assets/frase-logo-rmvbg.png" alt="SeaSalt Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="colecao.html">Coleção</a></li>
+            <li><a href="#">Impacto</a></li>
+            <li><a href="carrinho.html" class="cart-status">carrinho (0)</a></li>
+            <li><a href="login.html">Conta</a></li>
+        </ul>
+    </nav>
+
+    <main class="product-detail-container">
+        
+        <div class="product-gallery">
+            <div class="main-image-box">
+                <img id="mainImage" src="https://images.unsplash.com/photo-1579813137687-0b5c907b3992?q=80&w=1000&auto=format&fit=crop" alt="Produto Principal">
+            </div>
+            
+            <div class="thumbnail-list">
+                <img src="https://images.unsplash.com/photo-1579813137687-0b5c907b3992?q=80&w=1000&auto=format&fit=crop" class="thumb active" onclick="changeImage(this)">
+                <img src="https://images.unsplash.com/photo-1541819660-3be4a1d32d0c?q=80&w=1000&auto=format&fit=crop" class="thumb" onclick="changeImage(this)">
+                <img src="https://images.unsplash.com/photo-1563273398-e73715d97f26?q=80&w=1000&auto=format&fit=crop" class="thumb" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <div class="product-info-panel">
+            <div class="breadcrumb">
+                <a href="colecao.html">Coleção</a> / <span id="catProd">Biquínis</span>
+            </div>
+
+            <h1 id="tituloProd">Top Atlantis</h1>
+            <p class="price-large" id="precoProd">45.00€</p>
+
+            <p class="product-description" id="descProd">
+                O Top Atlantis oferece um suporte elegante com um design intemporal. Feito em Portugal com Econyl® regenerado a partir de plásticos do oceano, proporciona conforto extremo e resistência.
+            </p>
+
+            <div class="size-selector">
+                <span class="size-label">Tamanho: <span id="selectedSize">M</span></span>
+                <div class="size-buttons">
+                    <button class="size-btn" onclick="selectSize(this, 'S')">S</button>
+                    <button class="size-btn active" onclick="selectSize(this, 'M')">M</button>
+                    <button class="size-btn" onclick="selectSize(this, 'L')">L</button>
+                </div>
+            </div>
+
+            <button class="btn-buy-large">Adicionar ao Carrinho</button>
+
+            <div class="product-accordion">
+                <details>
+                    <summary>Composição e Cuidados</summary>
+                    <p>78% Poliamida Reciclada (Econyl®), 22% Elastano. Lavar à mão com água fria. Secar à sombra.</p>
+                </details>
+                <details>
+                    <summary>Envios e Devoluções</summary>
+                    <p>Envio grátis para Portugal Continental em compras superiores a 60€. Tens 14 dias para devoluções.</p>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <footer id="main-footer">
+        <div class="footer-logo">SEASALT<span>~</span></div>
+    </footer>
+
+    <script>
+        function changeImage(thumbElement) {
+            // Muda a imagem principal
+            document.getElementById('mainImage').src = thumbElement.src;
+            
+            // Remove a classe "active" de todas e mete só na clicada
+            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            thumbElement.classList.add('active');
+        }
+
+        function selectSize(btnElement, size) {
+            // Atualiza o tamanho selecionado no texto
+            document.getElementById('selectedSize').innerText = size;
+
+            // Muda o botão ativo
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>

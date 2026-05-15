@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const nome = document.getElementById('nome').value;
             const preco = parseFloat(document.getElementById('preco').value);
             const descricao = document.getElementById('descricao').value;
+            const tamanho = document.getElementById('tamanho').value;
+            const cor = document.getElementById('cor').value;
+            const categoria = document.getElementById('categoria').value;
             const imagemInput = document.getElementById('imagem');
             const file = imagemInput.files[0];
 
@@ -32,14 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const filePath = `${fileName}`;
 
             const { error: uploadError } = await supabase.storage
-                .from('produtos')
+                .from('produto')
                 .upload(filePath, file);
 
             if (uploadError) throw uploadError;
 
             // 2. Obter o URL público da imagem recém guardada
             const { data: publicUrlData } = supabase.storage
-                .from('produtos')
+                .from('produto')
                 .getPublicUrl(filePath);
 
             const imagemUrl = publicUrlData.publicUrl;
@@ -51,6 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     { 
                         nome: nome, 
                         preco: preco, 
+                        categoria: categoria,
+                        tamanho: tamanho,
+                        cor: cor,
                         descricao: descricao, 
                         imagem_url: imagemUrl,
                         ativo: true // Adicionado para aparecer na página de Coleção automaticamente

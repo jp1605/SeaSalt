@@ -25,13 +25,21 @@
         
         <div class="product-gallery">
             <div class="main-image-box">
-                <img id="mainImage" src="https://images.unsplash.com/photo-1579813137687-0b5c907b3992?q=80&w=1000&auto=format&fit=crop" alt="Produto Principal">
+               <!-- <img id="mainImage" src="https://images.unsplash.com/photo-1579813137687-0b5c907b3992?q=80&w=1000&auto=format&fit=crop" alt="Produto Principal">
+                -->
+                <img id="mainImage" src="" alt="Produto Principal">
             </div>
             
             <div class="thumbnail-list">
+               <!--
                 <img src="https://images.unsplash.com/photo-1579813137687-0b5c907b3992?q=80&w=1000&auto=format&fit=crop" class="thumb active" onclick="changeImage(this)">
                 <img src="https://images.unsplash.com/photo-1541819660-3be4a1d32d0c?q=80&w=1000&auto=format&fit=crop" class="thumb" onclick="changeImage(this)">
                 <img src="https://images.unsplash.com/photo-1563273398-e73715d97f26?q=80&w=1000&auto=format&fit=crop" class="thumb" onclick="changeImage(this)">
+            -->
+                <img src="" class="thumb active" onclick="changeImage(this)">
+                <img src="" class="thumb" onclick="changeImage(this)">
+                <img src="" class="thumb" onclick="changeImage(this)">
+            
             </div>
         </div>
 
@@ -75,24 +83,22 @@
         <div class="footer-logo">SEASALT<span>~</span></div>
     </footer>
 
-    <script>
-        function changeImage(thumbElement) {
-            // Muda a imagem principal
-            document.getElementById('mainImage').src = thumbElement.src;
-            
-            // Remove a classe "active" de todas e mete só na clicada
-            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-            thumbElement.classList.add('active');
-        }
 
-        function selectSize(btnElement, size) {
-            // Atualiza o tamanho selecionado no texto
-            document.getElementById('selectedSize').innerText = size;
+    <script type="module" src="../js/produto.js"></script>
 
-            // Muda o botão ativo
-            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-            btnElement.classList.add('active');
-        }
-    </script>
+        <script>
+            function changeImage(thumbElement) {
+                document.getElementById('mainImage').src = thumbElement.src;
+                document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+                thumbElement.classList.add('active');
+            }
+
+            function selectSize(btnElement, size) {
+                document.getElementById('selectedSize').innerText = size;
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                btnElement.classList.add('active');
+            }
+        </script>
+
 </body>
 </html>

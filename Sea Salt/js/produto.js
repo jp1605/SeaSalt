@@ -1,39 +1,50 @@
 import { supabase } from './supabase.js';
 
 async function carregarProduto() {
-    // 1. Obter o ID do produto a partir do URL (ex: produto.html?id=1)
+    // 1. Apanhar o ID na barra de endereço (ex: ?id=3)
     const urlParams = new URLSearchParams(window.location.search);
     const idProduto = urlParams.get('id');
 
-    // Elementos HTML que vão receber a informação
-    const imagemElement = document.getElementById('produto-imagem');
-    const nomeElement = document.getElementById('produto-nome');
-    const precoElement = document.getElementById('produto-preco');
-    const descElement = document.getElementById('produto-descricao');
+    // Elementos HTML do teu design
+    const imagemElement = document.getElementById('mainImage');
+    const tituloElement = document.getElementById('tituloProd');
+    const precoElement = document.getElementById('precoProd');
+    const descElement = document.getElementById('descProd');
+    const catElement = document.getElementById('catProd');
 
     if (!idProduto) {
-        if (nomeElement) nomeElement.textContent = 'Produto não encontrado.';
+        if (tituloElement) tituloElement.textContent = 'Produto não encontrado.';
         return;
     }
 
     try {
-        // 2. Pedir ao Supabase o produto com este ID específico
+        // 2. Pedir o biquíni específico ao Supabase
         const { data: produto, error } = await supabase
             .from('produto')
             .select('*')
             .eq('id_produto', idProduto)
-            .single(); // .single() retorna 1 objeto em vez de um array (lista)
+            .single();
 
         if (error) throw error;
 
-        // 3. Preencher o HTML com os dados e a imagem vindos da Base de Dados
+        // 3. Substituir o texto falso do HTML pelos dados reais
         if (imagemElement) imagemElement.src = produto.imagem_url;
-        if (nomeElement) nomeElement.textContent = produto.nome;
+        if (tituloElement) tituloElement.textContent = produto.nome;
         if (precoElement) precoElement.textContent = `${produto.preco.toFixed(2)}€`;
         if (descElement) descElement.textContent = produto.descricao;
+        if (catElement && produto.categoria) catElement.textContent = produto.categoria;
+
+        // Limpar as imagens falsas das miniaturas em baixo e meter a verdadeira
+        const thumbnailList = document.querySelector('.thumbnail-list');
+        if (thumbnailList) {
+            thumbnailList.innerHTML = `
+                <img src="${produto.imagem_url}" class="thumb active" onclick="changeImage(this)">
+            `;
+        }
+
     } catch (erro) {
         console.error("Erro ao carregar o produto:", erro.message);
-        if (nomeElement) nomeElement.textContent = 'Erro ao carregar detalhes do produto.';
+        if (tituloElement) tituloElement.textContent = 'Erro a carregar produto.';
     }
 }
 

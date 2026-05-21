@@ -42,10 +42,27 @@ async function carregarProduto() {
             `;
         }
 
+        // 4. LÓGICA DO CARRINHO: Ativar o botão
+        const btnComprar = document.querySelector('.btn-buy-large');
+        if (btnComprar) {
+            btnComprar.addEventListener('click', () => {
+                // Lê o tamanho que está escrito no ecrã (S, M ou L)
+                const tamanhoSelecionado = document.getElementById('selectedSize').innerText;
+                
+                // Envia para o ficheiro cart.js global
+                if (window.addToCart) {
+                    window.addToCart(produto.nome, produto.preco, produto.imagem_url, tamanhoSelecionado);
+                } else {
+                    console.error("A função addToCart não está disponível. Verifica se o cart.js está no HTML.");
+                }
+            });
+        }
+
     } catch (erro) {
         console.error("Erro ao carregar o produto:", erro.message);
         if (tituloElement) tituloElement.textContent = 'Erro a carregar produto.';
     }
 }
 
+// Executar quando a página terminar de carregar
 document.addEventListener('DOMContentLoaded', carregarProduto);

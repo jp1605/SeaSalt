@@ -1,5 +1,8 @@
 // js/script.js - Lógica visual da homepage
 
+import { supabase } from './supabase.js';
+
+
 window.onscroll = function() {
     const nav = document.querySelector('.navbar4'); 
     const logoDot = document.querySelector('.logo span');
@@ -47,3 +50,53 @@ dots.forEach((dot, index) => {
         grid.style.transform = `translateX(-${moveAmount}%)`;
     });
 });
+
+
+
+// ==========================================
+// NOVA LÓGICA: CARREGAR PRODUTOS DO SUPABASE
+// ==========================================
+async function carregarEssenciaisVerao() {
+    // Seleciona a grelha do teu carrossel
+    const grid = document.querySelector('.product-grid');
+    if (!grid) return; // Se a página não tiver a grelha, ignora
+
+    try {
+        const { data: produtos, error } = await supabase
+            .from('produto')
+            .select('*')
+            .eq('ativo', true)
+            .limit(5); // Carrega 5 biquínis para o teu carrossel
+
+        if (error) throw error;
+
+        if (!produtos || produtos.length === 0) return;
+
+        grid.innerHTML = ''; // Limpa os produtos falsos
+
+        produtos.forEach(p => {
+            // Desenha os cartões usando exatamente as tuas classes CSS
+            grid.innerHTML += `
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="html/produto.html?id=${p.id_produto}">
+                            <img src="${p.imagem_url}" alt="${p.nome}">
+                        </a>
+                        <div class="action-overlay">
+                            <button class="add-to-cart">Quick Add +</button>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h3>${p.nome}</h3>
+                        <p class="price">${p.preco.toFixed(2)}€</p>
+                    </div>
+                </div>
+            `;
+        });
+
+    } catch (erro) {
+        console.error("Erro a carregar os essenciais:", erro.message);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', carregarEssenciaisVerao);

@@ -231,20 +231,21 @@ body {
 /* Ajusta o carrossel para ser fluido */
 .carousel-view {
     width: 100%;
-    overflow: hidden; /* Isto esconde o que sobra, é necessário */
+    /*overflow: hidden; /* Isto esconde o que sobra, é necessário */
     position: relative;
 }
 
 .product-grid {
     display: flex;
     transition: transform 0.5s ease;
-    width: 100%; /* Garante que os cards não fiquem espremidos */
+    width: 70%; /* Garante que os cards não fiquem espremidos */
 }
 
 .product-card {
     min-width: 25%; /* Se quiseres 4 produtos por "ecrã", usa 25% */
     flex: 0 0 25%;
-    padding: 0 10px; /* Espaço entre os biquínis */
+
+    padding: 0 50px; /* Espaço entre os biquínis */
 
 
 

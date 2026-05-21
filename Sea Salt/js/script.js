@@ -55,45 +55,74 @@ dots.forEach((dot, index) => {
 
 // ==========================================
 // NOVA LÓGICA: CARREGAR PRODUTOS DO SUPABASE
-// ==========================================
-async function carregarEssenciaisVerao() {
+// ==========================================async function carregarEssenciaisVerao() {
+    async function carregarEssenciaisVerao() {
     const grid = document.querySelector('.product-grid');
-    const pager = document.getElementById('pager-container');
+    const pagerContainer = document.querySelector('.pager');
+    
     if (!grid) return;
 
     try {
         const { data: produtos, error } = await supabase
             .from('produto')
             .select('*')
-            .eq('ativo', true); // Carrega tudo o que estiver ativo
+            .eq('ativo', true);
 
         if (error) throw error;
         if (!produtos || produtos.length === 0) return;
 
+        // Limpa a grelha e a área dos botões
         grid.innerHTML = '';
-        pager.innerHTML = ''; // Limpa os botões antigos
+        if (pagerContainer) pagerContainer.innerHTML = '';
 
-        // 1. Desenhar produtos
-        produtos.forEach((p, index) => {
-            grid.innerHTML += `...`; // (Mantém o teu código de inserir o card aqui)
-            
-            // 2. Criar botão dinâmico para cada produto
-            const btn = document.createElement('button');
-            if (index === 0) btn.classList.add('active');
-            btn.innerHTML = '<span></span>';
-            
-            // Lógica de deslize ao clicar
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.pager button').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                grid.style.transform = `translateX(-${index * 100}%)`;
-            });
-            
-            pager.appendChild(btn);
+        // 1. DESENHAR OS PRODUTOS (Com as imagens de volta!)
+        produtos.forEach(p => {
+            grid.innerHTML += `
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="html/produto.html?id=${p.id_produto}">
+                            <img src="${p.imagem_url}" alt="${p.nome}">
+                        </a>
+                        <div class="action-overlay">
+                            <button class="add-to-cart">Quick Add +</button>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h3>${p.nome}</h3>
+                        <p class="price">${p.preco.toFixed(2)}€</p>
+                    </div>
+                </div>
+            `;
         });
+        
+        // 2. MATEMÁTICA DOS BOTÕES (1 botão por cada 4 produtos)
+        const produtosPorPagina = 4; // Podes mudar para 3 se preferires
+        const numeroPaginas = Math.ceil(produtos.length / produtosPorPagina);
+
+        // Só desenha botões se houver mais do que 1 página
+        if (pagerContainer && numeroPaginas > 1) {
+            for (let i = 0; i < numeroPaginas; i++) {
+                const btn = document.createElement('button');
+                if (i === 0) btn.classList.add('active'); // O primeiro começa ativo
+                btn.innerHTML = '<span></span>';
+                
+                // Lógica de deslize ao clicar
+                btn.addEventListener('click', () => {
+                    // Remove o active de todos os botões
+                    document.querySelectorAll('.pager button').forEach(b => b.classList.remove('active'));
+                    // Adiciona o active no botão clicado
+                    btn.classList.add('active');
+                    // Move a grelha inteira
+                    grid.style.transform = `translateX(-${i * 100}%)`;
+                });
+                
+                pagerContainer.appendChild(btn);
+            }
+        }
         
     } catch (erro) {
         console.error("Erro:", erro.message);
     }
 }
+
 document.addEventListener('DOMContentLoaded', carregarEssenciaisVerao);

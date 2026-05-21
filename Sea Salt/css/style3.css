@@ -242,7 +242,13 @@ body {
 }
 
 .product-card {
-   flex: 0 0 340px; /* Largura fixa do cartão */
+    min-width: 25%; /* Se quiseres 4 produtos por "ecrã", usa 25% */
+    flex: 0 0 25%;
+    padding: 0 10px; /* Espaço entre os biquínis */
+
+
+
+   /* flex: 0 0 340px; /* Largura fixa do cartão */
     
     /* Efeito Glassmorphism em fundo claro */
     background: rgba(255, 255, 255, 0.6);
@@ -250,11 +256,11 @@ body {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.9);
     
-    padding: 1.2rem;
+   /* padding: 1.2rem;*/
     border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     transition: var(--transition);
-    cursor: pointer; /* Espaço entre os biquínis */
+    cursor: pointer;
 }
 
 .product-grid::-webkit-scrollbar {

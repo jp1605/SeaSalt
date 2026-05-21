@@ -221,35 +221,29 @@ body {
     font-weight: 300;
 }
 
-
-
-
-
 /* Estrutura do Carrossel */
-
-
-/* Ajusta o carrossel para ser fluido */
 .carousel-view {
     width: 100%;
-    /*overflow: hidden; /* Isto esconde o que sobra, é necessário */
-    position: relative;
+    padding: 0 5%;
 }
 
 .product-grid {
     display: flex;
-    transition: transform 0.5s ease;
-    width: 70%; /* Garante que os cards não fiquem espremidos */
+    gap: 2.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 3rem; /* Espaço para a sombra */
+    /* Esconde a barra de scroll feia */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.product-grid::-webkit-scrollbar {
+    display: none;
 }
 
+/* O Cartão Glassmorphism (A Magia) */
 .product-card {
-    min-width: 25%; /* Se quiseres 4 produtos por "ecrã", usa 25% */
-    flex: 0 0 25%;
-
-    padding: 0 50px; /* Espaço entre os biquínis */
-
-
-
-   /* flex: 0 0 340px; /* Largura fixa do cartão */
+    flex: 0 0 340px; /* Largura fixa do cartão */
     
     /* Efeito Glassmorphism em fundo claro */
     background: rgba(255, 255, 255, 0.6);
@@ -257,17 +251,12 @@ body {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.9);
     
-   /* padding: 1.2rem;*/
+    padding: 1.2rem;
     border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     transition: var(--transition);
     cursor: pointer;
 }
-
-.product-grid::-webkit-scrollbar {
-    display: none;
-}
-
 
 .product-card:hover {
     transform: translateY(-10px);

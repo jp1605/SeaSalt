@@ -57,46 +57,43 @@ dots.forEach((dot, index) => {
 // NOVA LÓGICA: CARREGAR PRODUTOS DO SUPABASE
 // ==========================================
 async function carregarEssenciaisVerao() {
-    // Seleciona a grelha do teu carrossel
     const grid = document.querySelector('.product-grid');
-    if (!grid) return; // Se a página não tiver a grelha, ignora
+    const pager = document.getElementById('pager-container');
+    if (!grid) return;
 
     try {
         const { data: produtos, error } = await supabase
             .from('produto')
             .select('*')
-            .eq('ativo', true)
-            .limit(5); // Carrega 5 biquínis para o teu carrossel
+            .eq('ativo', true); // Carrega tudo o que estiver ativo
 
         if (error) throw error;
-
         if (!produtos || produtos.length === 0) return;
 
-        grid.innerHTML = ''; // Limpa os produtos falsos
+        grid.innerHTML = '';
+        pager.innerHTML = ''; // Limpa os botões antigos
 
-        produtos.forEach(p => {
-            // Desenha os cartões usando exatamente as tuas classes CSS
-            grid.innerHTML += `
-                <div class="product-card">
-                    <div class="product-image">
-                        <a href="html/produto.html?id=${p.id_produto}">
-                            <img src="${p.imagem_url}" alt="${p.nome}">
-                        </a>
-                        <div class="action-overlay">
-                            <button class="add-to-cart">Quick Add +</button>
-                        </div>
-                    </div>
-                    <div class="product-details">
-                        <h3>${p.nome}</h3>
-                        <p class="price">${p.preco.toFixed(2)}€</p>
-                    </div>
-                </div>
-            `;
+        // 1. Desenhar produtos
+        produtos.forEach((p, index) => {
+            grid.innerHTML += `...`; // (Mantém o teu código de inserir o card aqui)
+            
+            // 2. Criar botão dinâmico para cada produto
+            const btn = document.createElement('button');
+            if (index === 0) btn.classList.add('active');
+            btn.innerHTML = '<span></span>';
+            
+            // Lógica de deslize ao clicar
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pager button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                grid.style.transform = `translateX(-${index * 100}%)`;
+            });
+            
+            pager.appendChild(btn);
         });
-
+        
     } catch (erro) {
-        console.error("Erro a carregar os essenciais:", erro.message);
+        console.error("Erro:", erro.message);
     }
 }
-
 document.addEventListener('DOMContentLoaded', carregarEssenciaisVerao);
